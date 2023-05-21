@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors())
 
 dotenv.config();
-mongoose.connect(process.env.DB_CONNECT)
+mongoose.connect("mongodb+srv://math_knots:mathknots@cluster0.sinhd.mongodb.net/mathknots?retryWrites=true&w=majority")
           .then(() => {console.log("connected to mongodb");})
           .catch((error) => {
                 console.log(error);

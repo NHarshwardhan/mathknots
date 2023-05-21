@@ -18,4 +18,6 @@ mongoose.connect(process.env.DB_CONNECT)
 const bookRoute = require('./routes/books');
 app.use('/api',bookRoute);
 
-app.listen(3000,()=>console.log('Listening on port 3000....'));
+app.listen(process.env.PORT || 8000, () => {
+    console.log(`Listening on port no 8000`)
+})

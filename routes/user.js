@@ -38,5 +38,19 @@ router.put('/registered_users/:id',async(req,res)=>{
     }    
 })
 
+router.delete('/registered_users/:id',async(req,res)=>{
+
+    const foundRecord= await User.findById({ _id: req.params.id })
+   
+    try{
+        await foundRecord.deleteOne(foundRecord)
+        res.send({info:'Record deleted Successfully'})
+     }
+     catch(err){
+         res.status(400).send(err)
+     }  
+})
+
+
 
 module.exports = router;

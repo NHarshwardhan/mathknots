@@ -38,5 +38,18 @@ router.put('/books/:id',async(req,res)=>{
     }    
 })
 
+router.delete('/books/:id',async(req,res)=>{
+
+    const foundRecord= await Book.findById({ _id: req.params.id })
+   
+    try{
+        await foundRecord.deleteOne(foundRecord)
+        res.send({info:'Record deleted Successfully'})
+     }
+     catch(err){
+         res.status(400).send(err)
+     } 
+})
+
 
 module.exports = router;
